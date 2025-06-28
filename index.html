@@ -12,137 +12,89 @@
     color: #fff;
     text-align: center;
     overflow-x: hidden;
-    animation: waveBackground 10s infinite alternate ease-in-out;
   }
-  header {
-    position: relative;
-    background: url('logo.png') no-repeat center top;
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  h1 {
-    font-size: 4em;
-    color: #00f0ff;
-    text-shadow: 0 0 20px #00f0ff;
-    animation: neonGlow 2s infinite alternate;
-  }
-  p.slogan {
-    font-size: 1.8em;
+  h2 {
+    font-size: 2em;
+    text-shadow: 0 0 10px #00f0ff;
     margin-bottom: 1em;
-    text-shadow: 0 0 10px #ff6be9;
-    animation: neonGlowPink 3s infinite alternate;
   }
-  .buy-button, .socials a, .buy-again {
-    display: inline-block;
-    margin: 1em;
-    padding: 0.8em 1.5em;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #00f0ff, #ff6be9);
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 0 10px #00f0ff;
-    animation: neonGlowButton 2.5s infinite alternate, float 6s infinite ease-in-out;
-  }
-  section {
+  .section {
     margin: 2em auto;
-    max-width: 800px;
-    text-align: left;
+    max-width: 900px;
+    padding: 1em;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
   }
-  footer {
-    margin: 2em 0;
-    font-size: 0.9em;
-    color: #999;
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
-  footer a {
-    color: #999;
-    margin: 0 0.5em;
-    text-decoration: none;
+  .card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  footer a:hover {
-    text-decoration: underline;
+  .card {
+    background: linear-gradient(135deg, rgba(0,240,255,0.2), rgba(255,107,233,0.2));
+    border: 1px solid rgba(0,240,255,0.5);
+    border-radius: 15px;
+    padding: 1em;
+    margin: 1em;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0,240,255,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
   }
-  .palm {
-    position: absolute;
-    top: -100px;
-    width: 50px;
-    height: 50px;
-    background: url('palm.png') no-repeat center/contain;
-    animation: fallPalm 15s linear infinite;
-    opacity: 0.7;
-  }
-  @keyframes neonGlow {
-    from { text-shadow: 0 0 5px #00f0ff; }
-    to { text-shadow: 0 0 20px #00f0ff, 0 0 30px #00f0ff; }
-  }
-  @keyframes neonGlowPink {
-    from { text-shadow: 0 0 5px #ff6be9; }
-    to { text-shadow: 0 0 20px #ff6be9, 0 0 30px #ff6be9; }
-  }
-  @keyframes neonGlowButton {
-    from { box-shadow: 0 0 5px #00f0ff; }
-    to { box-shadow: 0 0 20px #00f0ff, 0 0 30px #ff6be9; }
-  }
-  @keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
-  }
-  @keyframes waveBackground {
-    0% { background-position: 0 0; }
-    100% { background-position: 100px 0; }
-  }
-  @keyframes fallPalm {
-    0% { top: -100px; left: 10%; }
-    100% { top: 110%; left: 12%; }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0,240,255,0.6);
   }
 </style>
 </head>
 <body>
-  <div class="palm"></div>
   <header>
     <h1>SummerSolanaCoin ☀️🌴</h1>
     <p class="slogan">🌞 One summer. One coin. One community.</p>
     <a href="https://pump.fun" target="_blank" class="buy-button">🛒 Buy Now on PumpFun</a>
   </header>
 
-  <section>
-    <h2>About</h2>
+  <section class="section" id="about">
+    <h2>About 📜</h2>
     <p>SolanaSummerCoin is more than just a memecoin – it’s a collaborative summer project built by the community! Throughout the summer of 2025, we’ll create something unforgettable together: a memecoin born from fun, creativity, and real community involvement.</p>
   </section>
 
-  <section>
-    <h2>Roadmap</h2>
-    <ul>
-      <li>🚀 Launch on PumpFun</li>
-      <li>📈 DEX Listing</li>
-      <li>🎁 Community airdrops & events</li>
-      <li>😂 More memes & collaborations</li>
-    </ul>
+  <section class="section" id="roadmap">
+    <h2>Roadmap 🗺️</h2>
+    <div class="card-grid">
+      <div class="card">🚀 Launch on PumpFun</div>
+      <div class="card">📈 DEX Listing</div>
+      <div class="card">🎁 Community airdrops & events</div>
+      <div class="card">😂 More memes & collaborations</div>
+    </div>
   </section>
 
-  <section>
-    <h2>Tokenomics</h2>
-    <ul>
-      <li>🎉 50% Community Airdrop</li>
-      <li>🔒 30% Liquidity Pool (Locked)</li>
-      <li>📊 10% Marketing & DEX Listing</li>
-      <li>🛠️ 10% Development</li>
-    </ul>
+  <section class="section" id="tokenomics">
+    <h2>Tokenomics 💰</h2>
+    <div class="card-grid">
+      <div class="card">🎉 50% Community Airdrop</div>
+      <div class="card">🔒 30% Liquidity Pool (Locked)</div>
+      <div class="card">📊 10% Marketing & DEX Listing</div>
+      <div class="card">🛠️ 10% Development</div>
+    </div>
   </section>
 
-  <section class="socials">
-    <a href="https://t.me/SolanaSummerCoinSSC" target="_blank" class="buy-button">💬 Telegram</a>
-    <a href="https://x.com/i/communities/1930344504198083040" target="_blank" class="buy-button">🐦 X Community</a>
-    <a href="https://pump.fun" target="_blank" class="buy-button">🛒 Buy Again on PumpFun</a>
-  </section>
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {threshold: 0.1});
 
-  <footer>
-    &copy; 2025 SummerSolanaCoin. All rights reserved. | <a href="#">📄 Impressum</a> | <a href="#">🔒 Datenschutz</a>
-  </footer>
+  document.querySelectorAll('.section').forEach(section => {
+    observer.observe(section);
+  });
+</script>
 </body>
 </html>
