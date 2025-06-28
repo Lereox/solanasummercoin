@@ -14,7 +14,7 @@
     overflow-x: hidden;
   }
   header {
-    background: url('logo.png') no-repeat center top;
+    background: url('logo.png') no-repeat center center;
     background-size: cover;
     height: 100vh;
     display: flex;
@@ -34,6 +34,11 @@
   header > * {
     position: relative;
     z-index: 2;
+  }
+  @media (max-width: 600px) {
+    header {
+      background-position: center center;
+    }
   }
   h1 {
     font-size: 4em;
