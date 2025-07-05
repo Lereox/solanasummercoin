@@ -44,15 +44,22 @@
   }
   p.slogan {
     font-size: 1.8em;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.3em;
     text-shadow: 1px 1px 6px #000;
     animation: fadeSlideUp 2s ease-out;
   }
-  .countdown {
+  .countdown-banner {
+    display: inline-block;
+    margin: 0.8em auto;
+    padding: 0.6em 1.2em;
+    border: 2px solid #00f0ff;
+    border-radius: 25px;
     font-size: 1.5em;
-    margin-bottom: 1em;
     color: #ff6be9;
-    text-shadow: 1px 1px 6px #000;
+    background: rgba(0,0,0,0.3);
+    text-shadow: 0 0 10px #00f0ff;
+    box-shadow: 0 0 15px #00f0ff;
+    animation: pulseGlow 2s infinite alternate;
   }
   .buy-button {
     display: inline-block;
@@ -136,7 +143,7 @@
   <header>
     <h1>SolanaSummerCoin ☀️🌴</h1>
     <p class="slogan">🌞 One summer. One coin. One community.</p>
-    <div id="countdown" class="countdown">Loading countdown...</div>
+    <div id="countdown" class="countdown-banner">Loading countdown...</div>
     <a href="https://pump.fun" target="_blank" class="buy-button">🛒 Buy Now on PumpFun</a>
   </header>
 
@@ -176,8 +183,13 @@
   function updateCountdown() {
     const now = new Date();
     const day = now.getUTCDay();
-    const distanceToWednesday = (3 - day + 7) % 7 || 7; // next Wednesday
-    const target = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + distanceToWednesday, 15, 30, 0));
+    const daysUntilWednesday = (3 - day + 7) % 7 || 7; // next Wednesday
+    const target = new Date(Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate() + daysUntilWednesday,
+      15, 30, 0
+    ));
 
     const diff = target - now;
     if (diff <= 0) {
