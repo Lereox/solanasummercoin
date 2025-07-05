@@ -44,9 +44,15 @@
   }
   p.slogan {
     font-size: 1.8em;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     text-shadow: 1px 1px 6px #000;
     animation: fadeSlideUp 2s ease-out;
+  }
+  .countdown {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color: #ff6be9;
+    text-shadow: 1px 1px 6px #000;
   }
   .buy-button {
     display: inline-block;
@@ -130,6 +136,7 @@
   <header>
     <h1>SolanaSummerCoin ☀️🌴</h1>
     <p class="slogan">🌞 One summer. One coin. One community.</p>
+    <div id="countdown" class="countdown">Loading countdown...</div>
     <a href="https://pump.fun" target="_blank" class="buy-button">🛒 Buy Now on PumpFun</a>
   </header>
 
@@ -165,6 +172,30 @@
   </section>
 
 <script>
+  // Countdown to next Wednesday 15:30 UTC
+  function updateCountdown() {
+    const now = new Date();
+    const day = now.getUTCDay();
+    const distanceToWednesday = (3 - day + 7) % 7 || 7; // next Wednesday
+    const target = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + distanceToWednesday, 15, 30, 0));
+
+    const diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('countdown').textContent = '🚀 Launched!';
+      return;
+    }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('countdown').textContent =
+      `⏳ Launch in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // Slide-in animation
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
@@ -172,7 +203,6 @@
       }
     });
   }, {threshold: 0.1});
-
   document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
   });
