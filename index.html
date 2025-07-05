@@ -56,9 +56,9 @@
     border-radius: 25px;
     font-size: 1.5em;
     color: #ff6be9;
-    background: rgba(0,0,0,0.3);
     text-shadow: 0 0 10px #00f0ff;
     box-shadow: 0 0 15px #00f0ff;
+    background: rgba(0,0,0,0.3);
     animation: pulseGlow 2s infinite alternate;
   }
   .buy-button {
@@ -116,7 +116,6 @@
     transform: translateY(-5px);
     box-shadow: 0 0 20px rgba(0,240,255,0.6);
   }
-
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -165,32 +164,32 @@
   <section class="section" id="tokenomics">
     <h2>Tokenomics 💰</h2>
     <div class="card-grid">
-      <div class="card">🎉 50% Community Airdrop</div>
+      <div class="card">🎉 70% Community Airdrop</div>
       <div class="card">🔒 30% Liquidity Pool (Locked)</div>
-      <div class="card">📊 10% Marketing & DEX Listing</div>
-      <div class="card">🛠️ 10% Development</div>
     </div>
   </section>
 
-  <section class="socials">
-    <a href="https://t.me/SolanaSummerCoinSSC" target="_blank" class="buy-button">💬 Telegram</a>
-    <a href="https://x.com/i/communities/1930344504198083040" target="_blank" class="buy-button">🐦 X Community</a>
-    <a href="https://pump.fun" target="_blank" class="buy-button">🛒 Buy Again on PumpFun</a>
+  <section class="section" id="socialmedia">
+    <h2>Social Media 📣</h2>
+    <div class="card-grid">
+      <a href="https://t.me/SolanaSummerCoinSSC" target="_blank" class="card">💬 Join Telegram</a>
+      <a href="https://x.com/i/communities/1930344504198083040" target="_blank" class="card">🐦 X Community</a>
+      <a href="https://pump.fun" target="_blank" class="buy-button">🛒 Buy Again on PumpFun</a>
+    </div>
   </section>
 
 <script>
-  // Countdown to next Wednesday 15:30 UTC
+  // Countdown zu nächstem Mittwoch 15:30 UTC
   function updateCountdown() {
     const now = new Date();
     const day = now.getUTCDay();
-    const daysUntilWednesday = (3 - day + 7) % 7 || 7; // next Wednesday
+    const daysUntilWednesday = (3 - day + 7) % 7 || 7;
     const target = new Date(Date.UTC(
       now.getUTCFullYear(),
       now.getUTCMonth(),
       now.getUTCDate() + daysUntilWednesday,
       15, 30, 0
     ));
-
     const diff = target - now;
     if (diff <= 0) {
       document.getElementById('countdown').textContent = '🚀 Launched!';
@@ -200,14 +199,13 @@
     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
     const minutes = Math.floor((diff / (1000 * 60)) % 60);
     const seconds = Math.floor((diff / 1000) % 60);
-
     document.getElementById('countdown').textContent =
       `⏳ Launch in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
   }
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  // Slide-in animation
+  // Slide-in Animation
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
