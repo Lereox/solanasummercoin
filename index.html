@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SolanaSummerCoin - Memecoin of Summer 2025</title>
+<title>SolanaSummerCoin - Whitepaper v0.1</title>
 <style>
   body {
     margin: 0;
@@ -12,21 +12,6 @@
     color: #fff;
     text-align: center;
     overflow-x: hidden;
-  }
-  .lang-toggle {
-    background: rgba(0,0,0,0.3);
-    padding: 0.5em;
-    font-size: 1em;
-    text-align: right;
-  }
-  .lang-toggle a {
-    margin: 0 0.5em;
-    cursor: pointer;
-    color: #00f0ff;
-    text-decoration: none;
-  }
-  .lang-toggle a:hover {
-    text-decoration: underline;
   }
   header {
     background: url('logo.png') no-repeat center top;
@@ -57,49 +42,13 @@
     text-shadow: 2px 2px 10px #000;
     animation: neonPulse 2s infinite alternate;
   }
-  p.slogan {
-    font-size: 1.8em;
-    margin-bottom: 0.3em;
-    text-shadow: 1px 1px 6px #000;
-    animation: fadeSlideUp 2s ease-out;
-  }
-  .countdown-banner {
-    display: inline-block;
-    margin: 0.8em auto;
-    padding: 0.6em 1.2em;
-    border: 2px solid #00f0ff;
-    border-radius: 25px;
-    font-size: 1.5em;
-    color: #ff6be9;
-    text-shadow: 0 0 10px #00f0ff;
-    box-shadow: 0 0 15px #00f0ff;
-    background: rgba(0,0,0,0.3);
-    animation: pulseGlow 2s infinite alternate;
-  }
-  .buy-button {
-    display: inline-block;
-    margin: 1em;
-    padding: 0.8em 1.5em;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #00f0ff, #ff6be9);
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    animation: float 4s ease-in-out infinite, pulseGlow 2s infinite alternate;
-  }
-  .buy-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  }
-  h2 {
-    font-size: 2em;
-    text-shadow: 0 0 10px #00f0ff;
+  .slogan {
+    font-size: 1.6em;
     margin-bottom: 1em;
-    animation: fadeSlideUp 2s ease-out;
+    color: #ff6be9;
+    text-shadow: 1px 1px 6px #000;
   }
-  .section {
+  section {
     margin: 2em auto;
     max-width: 900px;
     padding: 1em;
@@ -107,22 +56,34 @@
     transform: translateY(50px);
     transition: opacity 1s ease, transform 1s ease;
   }
-  .section.visible {
+  section.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+  h2 {
+    font-size: 2em;
+    text-shadow: 0 0 10px #00f0ff;
+    margin-bottom: 1em;
+    animation: fadeSlideUp 2s ease-out;
+  }
+  p {
+    font-size: 1.1em;
+    line-height: 1.6em;
+    margin: 0.5em 0;
   }
   .card-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 1em;
   }
   .card {
     background: linear-gradient(135deg, rgba(0,240,255,0.2), rgba(255,107,233,0.2));
     border: 1px solid rgba(0,240,255,0.5);
-    border-radius: 15px;
+    border-radius: 12px;
     padding: 1em;
-    margin: 1em;
-    width: 200px;
+    margin: 0.5em;
+    width: 220px;
     box-shadow: 0 0 10px rgba(0,240,255,0.3);
     transition: transform 0.3s, box-shadow 0.3s;
     animation: fadeSlideUp 2s ease-out;
@@ -131,128 +92,107 @@
     transform: translateY(-5px);
     box-shadow: 0 0 20px rgba(0,240,255,0.6);
   }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+  }
+  th, td {
+    padding: 0.6em;
+    border: 1px solid rgba(0,240,255,0.5);
+  }
+  th {
+    background: rgba(0,240,255,0.2);
+  }
   footer {
-    background: #111;
-    padding: 1.5em;
-    font-size: 0.8em;
+    margin: 2em 0;
+    font-size: 0.9em;
     color: #bbb;
-    line-height: 1.4em;
   }
-  footer a {
-    color: #00f0ff;
-    text-decoration: underline;
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
-  [data-lang] { display: none; }
-  [data-lang].active { display: block; }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes neonPulse { from { text-shadow: 0 0 5px #00f0ff; } to { text-shadow: 0 0 20px #00f0ff; } }
-  @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-  @keyframes pulseGlow { from { box-shadow: 0 0 5px #00f0ff; } to { box-shadow: 0 0 20px #ff6be9; } }
+  @keyframes neonPulse {
+    from { text-shadow: 0 0 5px #00f0ff; }
+    to { text-shadow: 0 0 20px #00f0ff; }
+  }
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 </style>
 </head>
 <body>
-  <div class="lang-toggle">
-    🌐 Language:
-    <a onclick="switchLanguage('en')">🇬🇧 English</a> |
-    <a onclick="switchLanguage('de')">🇩🇪 Deutsch</a>
+
+<header>
+  <h1>☀️ SolanaSummerCoin</h1>
+  <div class="slogan">Whitepaper v0.1 – Community Draft</div>
+</header>
+
+<section class="section">
+  <h2>🌴 Was ist SolanaSummerCoin?</h2>
+  <p>SolanaSummerCoin ($SSC) ist ein Community-getriebener Memecoin auf Solana, der pünktlich zur Hochsaison startet – 100 % Spaß, 0 % Ernst.</p>
+  <p>Das Ziel? Gemeinsam zu sehen, wie weit wir dieses Sommer-Projekt treiben können – ohne VCs, ohne Entwickler-Tricks, ohne Pre-Mint-Sneaky-Deals.</p>
+</section>
+
+<section class="section">
+  <h2>🛠 Wer steckt dahinter?</h2>
+  <p>Lereox (Developer) & [dein Pseudonym] – zwei Krypto-Nerds mit einer Mission: einen fairen, spaßigen Solana-Coin zu launchen, der nicht rugged wird.</p>
+  <p>Wir halten keine Tokens vor Launch, keine Wallet-Vorteile – wir kaufen wie alle anderen nach Launch auf Pump.fun.</p>
+</section>
+
+<section class="section">
+  <h2>💧 Tokenverteilung (geschätzt)</h2>
+  <p>(Wird nach Launch auf Pump.fun transparent einsehbar gemacht)</p>
+  <table>
+    <tr><th>Verwendung</th><th>% vom Supply</th><th>Beschreibung</th></tr>
+    <tr><td>Community</td><td>100%</td><td>Alle Tokens sind über Pump.fun erhältlich</td></tr>
+    <tr><td>Liquidity Pool</td><td>~30%</td><td>Ca.-Wert – variiert je nach Launchverlauf</td></tr>
+    <tr><td>Dev Wallet</td><td>0% vor Launch</td><td>Devs kaufen wie alle über den Markt</td></tr>
+  </table>
+  <p>❗ Keine Presales, keine Insider-Zuteilungen, kein Team-Mint.</p>
+</section>
+
+<section class="section">
+  <h2>🧠 Technische Infos</h2>
+  <p>Chain: Solana</p>
+  <p>Launch: Pump.fun</p>
+  <p>Contract: Wird nach Launch verlinkt (auditiert durch Community)</p>
+  <p>Ownership: Renounced / Locked je nach Pump.fun-Ablauf</p>
+</section>
+
+<section class="section">
+  <h2>🗺️ Roadmap (Very Summer)</h2>
+  <div class="card-grid">
+    <div class="card">☀️ Pre-Launch<br>Community-Hype, Meme-Kampagne</div>
+    <div class="card">🚀 Launch<br>Pump.fun-Launch, Token aktiv</div>
+    <div class="card">🌊 Expansion<br>Listings, Collabs, Sommer-Memes</div>
+    <div class="card">🍹 Pool Party<br>Irgendwo feiern wir das gemeinsam :)</div>
   </div>
+</section>
 
-  <header>
-    <h1>SolanaSummerCoin ☀️🌴</h1>
-    <p class="slogan">🌞 One summer. One coin. One community.</p>
-    <div id="countdown" class="countdown-banner">Loading countdown...</div>
-    <a href="https://pump.fun" target="_blank" class="buy-button">🛒 Buy Now on PumpFun</a>
-  </header>
+<section class="section">
+  <h2>⚠️ Rechtlicher Hinweis</h2>
+  <p>SolanaSummerCoin ist kein Investmentprodukt. Er ist ein Memecoin ohne finanziellen Gegenwert, Anspruch oder Garantie. Teilnahme erfolgt auf eigenes Risiko.</p>
+</section>
 
-  <section class="section" id="about">
-    <div data-lang="en" class="active">
-      <h2>About 📜</h2>
-      <p>SolanaSummerCoin is a fun, experimental, and community-led memecoin project built on Solana, with no intrinsic financial value or investment promise. It is created as a satire and social experience during summer 2025, in full compliance with European crypto guidelines for non-financial utility tokens.</p>
-    </div>
-    <div data-lang="de">
-      <h2>Über uns 📜</h2>
-      <p>SolanaSummerCoin ist ein spaßiges, experimentelles und gemeinschaftsgeleitetes Memecoin-Projekt auf Solana – ohne finanziellen Wert oder Investitionsversprechen. Es wurde als Satire und soziales Erlebnis für den Sommer 2025 erschaffen, in voller Übereinstimmung mit den EU-Richtlinien für nicht-finanzielle Utility-Tokens.</p>
-    </div>
-  </section>
+<footer>
+  SolanaSummerCoin – Kein finanzieller Rat – Nur Sommer & Memes ☀️🌴
+</footer>
 
-  <section class="section" id="roadmap">
-    <h2>Roadmap 🗺️</h2>
-    <div class="card-grid">
-      <div class="card">🚀 Launch on PumpFun</div>
-      <div class="card">📈 Listing after Bonding Curve</div>
-      <div class="card">🎁 Community Airdrops & Memes</div>
-      <div class="card">🧑‍🤝‍🧑 Collaborations & Giveaways</div>
-    </div>
-  </section>
-
-  <section class="section" id="tokenomics">
-    <h2>Tokenomics 💰</h2>
-    <div class="card-grid">
-      <div class="card">🎉 70% Community Airdrop</div>
-      <div class="card">🔒 30% Liquidity Pool (Locked)</div>
-    </div>
-  </section>
-
-  <section class="section" id="socialmedia">
-    <h2>Social Media 📣</h2>
-    <div class="card-grid">
-      <a href="https://t.me/SolanaSummerCoinSSC" target="_blank" class="buy-button">💬 Join Telegram</a>
-      <a href="https://x.com/i/communities/1930344504198083040" target="_blank" class="buy-button">🐦 X Community</a>
-      <a href="https://pump.fun" target="_blank" class="buy-button">🛒 Buy Again</a>
-    </div>
-  </section>
-
-  <footer>
-    <p>SolanaSummerCoin is a parody token and not a financial instrument. No financial advice, no team wallets, no presale. Just summer fun. 🌴<br>
-    Contact: info@solanasummercoin.fun — <a href="#disclaimer">Disclaimer</a></p>
-  </footer>
-
-  <script>
-    function updateCountdown() {
-      const now = new Date();
-      const day = now.getUTCDay();
-      const daysUntilWednesday = (3 - day + 7) % 7 || 7;
-      const target = new Date(Date.UTC(
-        now.getUTCFullYear(),
-        now.getUTCMonth(),
-        now.getUTCDate() + daysUntilWednesday,
-        15, 30, 0
-      ));
-      const diff = target - now;
-      if (diff <= 0) {
-        document.getElementById('countdown').textContent = '🚀 Launched!';
-        return;
+<script>
+  // Fade-In Animation beim Scrollen
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
       }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-      document.getElementById('countdown').textContent =
-        `⏳ Launch in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {threshold: 0.1});
-    document.querySelectorAll('.section').forEach(section => {
-      observer.observe(section);
     });
-
-    function switchLanguage(lang) {
-      document.querySelectorAll('[data-lang]').forEach(el => {
-        el.classList.remove('active');
-      });
-      document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
-        el.classList.add('active');
-      });
-    }
-  </script>
+  }, {threshold: 0.1});
+  document.querySelectorAll('.section').forEach(section => {
+    observer.observe(section);
+  });
+</script>
 </body>
 </html>
