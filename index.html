@@ -70,13 +70,8 @@
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     animation: float 4s ease-in-out infinite, pulseGlow 2s infinite alternate;
   }
-  .buy-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  }
-  .lang-toggle {
-    margin: 1em;
-  }
+  .buy-button:hover { transform: scale(1.1); box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+  .lang-toggle { margin: 1em; }
   .lang-toggle a { margin: 0 0.5em; cursor: pointer; }
   section {
     margin: 2em auto;
@@ -106,37 +101,27 @@
     box-shadow: 0 0 10px rgba(0,240,255,0.3);
     transition: transform 0.3s, box-shadow 0.3s;
   }
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(0,240,255,0.6);
-  }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 0 20px rgba(0,240,255,0.6); }
   table {
     width: 100%; border-collapse: collapse; margin-top: 1em;
   }
-  th, td {
-    padding: 0.6em; border: 1px solid rgba(0,240,255,0.5);
-  }
+  th, td { padding: 0.6em; border: 1px solid rgba(0,240,255,0.5); }
   th { background: rgba(0,240,255,0.2); }
-  footer {
-    margin: 2em 0; font-size: 0.9em; color: #bbb;
-  }
+  footer { margin: 2em 0; font-size: 0.9em; color: #bbb; }
   [data-lang] { display: none; }
   [data-lang].active { display: block; }
-  @keyframes neonPulse {
-    from { text-shadow: 0 0 5px #00f0ff; }
-    to { text-shadow: 0 0 20px #00f0ff; }
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-  }
-  @keyframes pulseGlow {
-    from { box-shadow: 0 0 5px #00f0ff; }
-    to { box-shadow: 0 0 20px #ff6be9; }
-  }
+  @keyframes neonPulse { from { text-shadow: 0 0 5px #00f0ff; } to { text-shadow: 0 0 20px #00f0ff; } }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+  @keyframes pulseGlow { from { box-shadow: 0 0 5px #00f0ff; } to { box-shadow: 0 0 20px #ff6be9; } }
 </style>
 </head>
 <body>
+
+<div class="lang-toggle">
+  🌐 Language:
+  <a onclick="switchLanguage('en')">🇬🇧 English</a> |
+  <a onclick="switchLanguage('de')">🇩🇪 Deutsch</a>
+</div>
 
 <header>
   <h1>☀️ SolanaSummerCoin</h1>
@@ -145,26 +130,51 @@
   <a href="https://pump.fun" target="_blank" class="buy-button" id="buyNow">🛒 Buy Now on PumpFun</a>
 </header>
 
-<div class="lang-toggle">
-  🌐 Language:
-  <a onclick="switchLanguage('en')">🇬🇧 English</a> |
-  <a onclick="switchLanguage('de')">🇩🇪 Deutsch</a>
-</div>
-
 <section class="section">
   <div data-lang="en" class="active">
     <h2>🌴 What is SolanaSummerCoin?</h2>
-    <p>SolanaSummerCoin ($SSC) is a community-driven memecoin on Solana for the summer – 100% fun, 0% serious.</p>
+    <p>SolanaSummerCoin ($SSC) is a community-driven memecoin on Solana for summer – 100% fun, 0% serious.</p>
     <p>No VCs, no dev tricks, no pre-mint deals – just see together how far this summer project can go.</p>
   </div>
   <div data-lang="de">
     <h2>🌴 Was ist SolanaSummerCoin?</h2>
     <p>SolanaSummerCoin ($SSC) ist ein Community-getriebener Memecoin auf Solana – 100 % Spaß, 0 % Ernst.</p>
-    <p>Keine VCs, keine Entwickler-Tricks, kein Pre-Mint – einfach gemeinsam schauen, wie weit wir dieses Sommerprojekt tragen können.</p>
+    <p>Keine VCs, keine Entwickler-Tricks, kein Pre-Mint – einfach schauen, wie weit wir dieses Sommerprojekt tragen können.</p>
   </div>
 </section>
 
-<!-- (Hier folgen Team, Tokenverteilung, Roadmap, Disclaimer...) -->
+<section class="section">
+  <h2>🛠 Team</h2>
+  <p>Lereox (Developer) & [dein Pseudonym] – zwei Krypto-Nerds, die einen fairen Solana-Coin launchen wollen.</p>
+  <p>Wir halten keine Tokens vor Launch – wir kaufen wie alle anderen nach Launch auf Pump.fun.</p>
+</section>
+
+<section class="section">
+  <h2>💧 Tokenomics</h2>
+  <p>(Transparent nach Launch auf Pump.fun)</p>
+  <table>
+    <tr><th>Verwendung</th><th>% vom Supply</th><th>Beschreibung</th></tr>
+    <tr><td>Community</td><td>100%</td><td>Alle Tokens über Pump.fun</td></tr>
+    <tr><td>Liquidity Pool</td><td>~30%</td><td>Varriert je nach Launch</td></tr>
+    <tr><td>Dev Wallet</td><td>0%</td><td>Devs kaufen wie alle</td></tr>
+  </table>
+  <p>❗ Keine Presales, keine Insider-Zuteilungen, kein Team-Mint.</p>
+</section>
+
+<section class="section">
+  <h2>🗺️ Roadmap</h2>
+  <div class="card-grid">
+    <div class="card">☀️ Pre-Launch<br>Community-Hype & Memes</div>
+    <div class="card">🚀 Launch<br>Pump.fun live</div>
+    <div class="card">🌊 Expansion<br>Listings, Collabs, Memes</div>
+    <div class="card">🍹 Pool Party<br>Community Event</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>⚠️ Disclaimer</h2>
+  <p>SolanaSummerCoin is a memecoin for fun only – no financial value or guarantee. Participation at your own risk.</p>
+</section>
 
 <section class="section">
   <h2>📣 Social Media</h2>
@@ -174,7 +184,7 @@
 </section>
 
 <footer>
-  SolanaSummerCoin – Just for fun, no financial advice ☀️🌴
+  SolanaSummerCoin – Just fun, no financial advice ☀️🌴
 </footer>
 
 <script>
@@ -198,10 +208,8 @@
     }
   }
   setInterval(updateCountdown,1000); updateCountdown();
-
   const observer=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');})},{threshold:0.1});
   document.querySelectorAll('.section').forEach(s=>observer.observe(s));
-
   function switchLanguage(lang){
     document.querySelectorAll('[data-lang]').forEach(el=>el.classList.remove('active'));
     document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el=>el.classList.add('active'));
