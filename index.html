@@ -13,6 +13,21 @@
     text-align: center;
     overflow-x: hidden;
   }
+  .lang-toggle {
+    background: rgba(0,0,0,0.3);
+    padding: 0.5em;
+    font-size: 1em;
+    text-align: right;
+  }
+  .lang-toggle a {
+    margin: 0 0.5em;
+    cursor: pointer;
+    color: #00f0ff;
+    text-decoration: none;
+  }
+  .lang-toggle a:hover {
+    text-decoration: underline;
+  }
   header {
     background: url('logo.png') no-repeat center top;
     background-size: cover;
@@ -116,29 +131,33 @@
     transform: translateY(-5px);
     box-shadow: 0 0 20px rgba(0,240,255,0.6);
   }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  footer {
+    background: #111;
+    padding: 1.5em;
+    font-size: 0.8em;
+    color: #bbb;
+    line-height: 1.4em;
   }
-  @keyframes neonPulse {
-    from { text-shadow: 0 0 5px #00f0ff; }
-    to { text-shadow: 0 0 20px #00f0ff; }
+  footer a {
+    color: #00f0ff;
+    text-decoration: underline;
   }
-  @keyframes fadeSlideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-  }
-  @keyframes pulseGlow {
-    from { box-shadow: 0 0 5px #00f0ff; }
-    to { box-shadow: 0 0 20px #ff6be9; }
-  }
+  [data-lang] { display: none; }
+  [data-lang].active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes neonPulse { from { text-shadow: 0 0 5px #00f0ff; } to { text-shadow: 0 0 20px #00f0ff; } }
+  @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+  @keyframes pulseGlow { from { box-shadow: 0 0 5px #00f0ff; } to { box-shadow: 0 0 20px #ff6be9; } }
 </style>
 </head>
 <body>
+  <div class="lang-toggle">
+    🌐 Language:
+    <a onclick="switchLanguage('en')">🇬🇧 English</a> |
+    <a onclick="switchLanguage('de')">🇩🇪 Deutsch</a>
+  </div>
+
   <header>
     <h1>SolanaSummerCoin ☀️🌴</h1>
     <p class="slogan">🌞 One summer. One coin. One community.</p>
@@ -147,23 +166,23 @@
   </header>
 
   <section class="section" id="about">
-    <h2>About 📜</h2>
-    <p>SolanaSummerCoin is more than just a memecoin – it’s a collaborative summer project built by the community!
-Throughout the summer of 2025, we’ll create something unforgettable together: a memecoin born from fun, creativity, and real community involvement. 🌞✨
-
-Together we’ll build, laugh, meme – and maybe even shake up the world of memecoins just a little. Whether you’re a developer, designer, or just a meme lover – there’s a place for everyone here. 🌊🎨
-
-🌞 One summer. One coin. One community.
-SolanaSummerCoin – the memecoin of summer 2025. 🌴🚀</p>
+    <div data-lang="en" class="active">
+      <h2>About 📜</h2>
+      <p>SolanaSummerCoin is a fun, experimental, and community-led memecoin project built on Solana, with no intrinsic financial value or investment promise. It is created as a satire and social experience during summer 2025, in full compliance with European crypto guidelines for non-financial utility tokens.</p>
+    </div>
+    <div data-lang="de">
+      <h2>Über uns 📜</h2>
+      <p>SolanaSummerCoin ist ein spaßiges, experimentelles und gemeinschaftsgeleitetes Memecoin-Projekt auf Solana – ohne finanziellen Wert oder Investitionsversprechen. Es wurde als Satire und soziales Erlebnis für den Sommer 2025 erschaffen, in voller Übereinstimmung mit den EU-Richtlinien für nicht-finanzielle Utility-Tokens.</p>
+    </div>
   </section>
 
   <section class="section" id="roadmap">
     <h2>Roadmap 🗺️</h2>
     <div class="card-grid">
       <div class="card">🚀 Launch on PumpFun</div>
-      <div class="card">📈 DEX Listing after Bonding Curve</div>
-      <div class="card">🎁 Community airdrops & events</div>
-      <div class="card">😂 More memes & collaborations</div>
+      <div class="card">📈 Listing after Bonding Curve</div>
+      <div class="card">🎁 Community Airdrops & Memes</div>
+      <div class="card">🧑‍🤝‍🧑 Collaborations & Giveaways</div>
     </div>
   </section>
 
@@ -175,53 +194,65 @@ SolanaSummerCoin – the memecoin of summer 2025. 🌴🚀</p>
     </div>
   </section>
 
- <section class="section" id="socialmedia">
-  <h2>Social Media 📣</h2>
-  <div class="card-grid">
-    <a href="https://t.me/SolanaSummerCoinSSC" target="_blank" class="buy-button">💬 Join Telegram</a>
-    <a href="https://x.com/i/communities/1930344504198083040" target="_blank" class="buy-button">🐦 X Community</a>
-    <a href="https://pump.fun" target="_blank" class="buy-button">🛒 Buy Again on PumpFun</a>
-  </div>
-</section>
+  <section class="section" id="socialmedia">
+    <h2>Social Media 📣</h2>
+    <div class="card-grid">
+      <a href="https://t.me/SolanaSummerCoinSSC" target="_blank" class="buy-button">💬 Join Telegram</a>
+      <a href="https://x.com/i/communities/1930344504198083040" target="_blank" class="buy-button">🐦 X Community</a>
+      <a href="https://pump.fun" target="_blank" class="buy-button">🛒 Buy Again</a>
+    </div>
+  </section>
 
-<script>
-  // Countdown zu nächstem Mittwoch 15:30 UTC
-  function updateCountdown() {
-    const now = new Date();
-    const day = now.getUTCDay();
-    const daysUntilWednesday = (3 - day + 7) % 7 || 7;
-    const target = new Date(Date.UTC(
-      now.getUTCFullYear(),
-      now.getUTCMonth(),
-      now.getUTCDate() + daysUntilWednesday,
-      15, 30, 0
-    ));
-    const diff = target - now;
-    if (diff <= 0) {
-      document.getElementById('countdown').textContent = '🚀 Launched!';
-      return;
-    }
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-    document.getElementById('countdown').textContent =
-      `⏳ Launch in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-  }
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
+  <footer>
+    <p>SolanaSummerCoin is a parody token and not a financial instrument. No financial advice, no team wallets, no presale. Just summer fun. 🌴<br>
+    Contact: info@solanasummercoin.fun — <a href="#disclaimer">Disclaimer</a></p>
+  </footer>
 
-  // Slide-in Animation
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
+  <script>
+    function updateCountdown() {
+      const now = new Date();
+      const day = now.getUTCDay();
+      const daysUntilWednesday = (3 - day + 7) % 7 || 7;
+      const target = new Date(Date.UTC(
+        now.getUTCFullYear(),
+        now.getUTCMonth(),
+        now.getUTCDate() + daysUntilWednesday,
+        15, 30, 0
+      ));
+      const diff = target - now;
+      if (diff <= 0) {
+        document.getElementById('countdown').textContent = '🚀 Launched!';
+        return;
       }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      document.getElementById('countdown').textContent =
+        `⏳ Launch in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {threshold: 0.1});
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
     });
-  }, {threshold: 0.1});
-  document.querySelectorAll('.section').forEach(section => {
-    observer.observe(section);
-  });
-</script>
+
+    function switchLanguage(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.remove('active');
+      });
+      document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+        el.classList.add('active');
+      });
+    }
+  </script>
 </body>
 </html>
