@@ -312,22 +312,25 @@ footer { margin: 2em 0; font-size: 0.9em; color: #bbb; }
 
 <script>
 function updateCountdown(){
-const now=new Date();
-const day=now.getUTCDay();
-const daysUntilWed=(3-day+7)%7||7;
-const target=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+daysUntilWed,15,30,0));
-const diff=target-now;
-const buyNow=document.getElementById('buyNow');
-const buyAgain=document.getElementById('buyAgain');
-if(diff<=0){
-document.getElementById('countdown').textContent='🚀 Launched!';
-buyNow.style.display='inline-block';
-buyAgain.style.display='inline-block';
-}else{
-const d=Math.floor(diff/86400000),h=Math.floor(diff/3600000)%24,m=Math.floor(diff/60000)%60,s=Math.floor(diff/1000)%60;
-document.getElementById('countdown').textContent=`⏳ Launch in: ${d}d ${h}h ${m}m ${s}s`;
-buyNow.style.display='none';
-buyAgain.style.display='none';
+  const now = new Date();
+  // Ersetze hier durch dein echtes Datum/Zeit (UTC):
+  const target = new Date(Date.UTC(2025, 6, 9, 15, 30, 0)); 
+  // Achtung: Monat ist 0-basiert => 6=Juli
+  const diff = target - now;
+  const buyNow = document.getElementById('buyNow');
+  const buyAgain = document.getElementById('buyAgain');
+  if(diff <= 0){
+    document.getElementById('countdown').textContent='🚀 Launched!';
+    buyNow.style.display='inline-block';
+    buyAgain.style.display='inline-block';
+  } else {
+    const d = Math.floor(diff/86400000),
+          h = Math.floor(diff/3600000)%24,
+          m = Math.floor(diff/60000)%60,
+          s = Math.floor(diff/1000)%60;
+    document.getElementById('countdown').textContent=`⏳ Launch in: ${d}d ${h}h ${m}m ${s}s`;
+    buyNow.style.display='none';
+    buyAgain.style.display='none';
 }
 }
 setInterval(updateCountdown,1000); updateCountdown();
