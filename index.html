@@ -1,413 +1,919 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SolanaSummerCoin</title>
+
 <style>
+
 body {
-  margin: 0;
-  font-family: sans-serif;
-  background: linear-gradient(180deg, #0a0a23, #1a1a40);
-  color: #fff;
-  text-align: center;
-  overflow-x: hidden;
+
+margin: 0;
+
+font-family: sans-serif;
+
+background: linear-gradient(180deg, #0a0a23, #1a1a40);
+
+color: #fff;
+
+text-align: center;
+
+overflow-x: hidden;
+
 }
+
 header {
-  background: url('logo.png') no-repeat center top;
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+
+background: url('logo.png') no-repeat center top;
+
+background-size: cover;
+
+height: 100vh;
+
+display: flex;
+
+flex-direction: column;
+
+justify-content: center;
+
+align-items: center;
+
+position: relative;
+
 }
+
 header::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4);
-  z-index: 1;
+
+content: '';
+
+position: absolute;
+
+top: 0; left: 0;
+
+width: 100%; height: 100%;
+
+background: rgba(0,0,0,0.4);
+
+z-index: 1;
+
 }
+
 header > * { position: relative; z-index: 2; }
+
 h1 {
-  font-size: 4em;
-  color: #00f0ff;
-  text-shadow: 2px 2px 10px #000;
+
+font-size: 4em;
+
+color: #00f0ff;
+
+text-shadow: 2px 2px 10px #000;
+
+animation: neonPulse 2s infinite alternate;
+
 }
+
 .slogan {
-  font-size: 1.4em;
-  margin-bottom: 0.5em;
-  color: #ff6be9;
-  text-shadow: 1px 1px 6px #000;
+
+font-size: 1.4em;
+
+margin-bottom: 0.5em;
+
+color: #ff6be9;
+
+text-shadow: 1px 1px 6px #000;
+
 }
+
 .countdown-banner {
-  display: inline-block;
-  margin: 0.8em auto;
-  padding: 0.6em 1.2em;
-  border: 2px solid #00f0ff;
-  border-radius: 25px;
-  font-size: 1.5em;
-  color: #ff6be9;
-  text-shadow: 0 0 10px #00f0ff;
-  box-shadow: 0 0 15px #00f0ff;
-  background: rgba(0,0,0,0.3);
+
+display: inline-block;
+
+margin: 0.8em auto;
+
+padding: 0.6em 1.2em;
+
+border: 2px solid #00f0ff;
+
+border-radius: 25px;
+
+font-size: 1.5em;
+
+color: #ff6be9;
+
+text-shadow: 0 0 10px #00f0ff;
+
+box-shadow: 0 0 15px #00f0ff;
+
+background: rgba(0,0,0,0.3);
+
+animation: pulseGlow 2s infinite alternate;
+
 }
+
 .buy-button {
-  display: none;
-  margin: 1em;
-  padding: 0.8em 1.5em;
-  border-radius: 30px;
-  background: linear-gradient(90deg, #00f0ff, #ff6be9);
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+
+display: inline-block;
+
+margin: 1em;
+
+padding: 0.8em 1.5em;
+
+border-radius: 30px;
+
+background: linear-gradient(90deg, #00f0ff, #ff6be9);
+
+color: #fff;
+
+text-decoration: none;
+
+font-weight: bold;
+
+transition: transform 0.2s, box-shadow 0.2s;
+
+box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+
+animation: float 4s ease-in-out infinite, pulseGlow 2s infinite alternate;
+
 }
-.buy-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+
+.buy-button:hover { transform: scale(1.1); box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+
+.lang-toggle { margin: 1em; }
+
+.lang-toggle a { margin: 0 0.5em; cursor: pointer; }
+
+section {
+
+margin: 2em auto;
+
+max-width: 900px;
+
+padding: 1em;
+
+opacity: 0;
+
+transform: translateY(50px);
+
+transition: opacity 1s ease, transform 1s ease;
+
 }
+
+section.visible { opacity: 1; transform: translateY(0); }
+
+h2 {
+
+font-size: 2em;
+
+text-shadow: 0 0 10px #00f0ff;
+
+margin-bottom: 1em;
+
+}
+
+p { font-size: 1.1em; line-height: 1.6em; margin: 0.5em 0; }
+
+.card-grid {
+
+display: flex; flex-wrap: wrap; justify-content: center; margin-top: 1em;
+
+}
+
+.card {
+
+background: linear-gradient(135deg, rgba(0,240,255,0.2), rgba(255,107,233,0.2));
+
+border: 1px solid rgba(0,240,255,0.5);
+
+border-radius: 12px;
+
+padding: 1em;
+
+margin: 0.5em;
+
+width: 220px;
+
+box-shadow: 0 0 10px rgba(0,240,255,0.3);
+
+transition: transform 0.3s, box-shadow 0.3s;
+
+}
+
+.card:hover { transform: translateY(-5px); box-shadow: 0 0 20px rgba(0,240,255,0.6); }
+
+table {
+
+width: 100%; border-collapse: collapse; margin-top: 1em;
+
+}
+
+th, td { padding: 0.6em; border: 1px solid rgba(0,240,255,0.5); }
+
+th { background: rgba(0,240,255,0.2); }
+
+footer { margin: 2em 0; font-size: 0.9em; color: #bbb; }
+
+[data-lang] { display: none; }
+
+[data-lang].active { display: block; }
+
+@keyframes neonPulse { from { text-shadow: 0 0 5px #00f0ff; } to { text-shadow: 0 0 20px #00f0ff; } }
+
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+@keyframes pulseGlow { from { box-shadow: 0 0 5px #00f0ff; } to { box-shadow: 0 0 20px #ff6be9; } }
+
 </style>
+
 </head>
+
 <body>
 
+
+
 <div class="lang-toggle">
+
 🌐 Language:
+
 <a onclick="switchLanguage('en')">🇬🇧 English</a> |
+
 <a onclick="switchLanguage('de')">🇩🇪 Deutsch</a> |
+
 <a onclick="switchLanguage('fr')">🇫🇷 Français</a> |
+
 <a onclick="switchLanguage('ru')">🇷🇺 Русский</a> |
+
 <a onclick="switchLanguage('pl')">🇵🇱 Polish</a> |
+
 <a onclick="switchLanguage('it')">🇮🇹 Italiano</a> |
+
 <a onclick="switchLanguage('sp')">🇪🇦 Español</a> |
+
 <a onclick="switchLanguage('ch')">🇨🇳 中文</a> |
+
 <a onclick="switchLanguage('jp')">🇯🇵 日本語</a> |
+
 </div>
+
+
 
 <header>
+
 <h1>☀️ SolanaSummerCoin</h1>
+
 <div class="slogan">🌞 One summer. One coin. One community. SolanaSummerCoin</div>
+
 <div id="countdown" class="countdown-banner">Loading countdown...</div>
-<a href="https://meteora.ag" target="_blank" class="buy-button" id="buyNow">🛒 Launch on Meteora</a>
+
+<a href="https://pump.fun/coin/95TTBR211D6ZY4xtDzAsDPboLCnu3X9vGs9C8ehbpump" target="_blank" class="buy-button" id="buyNow">🛒 Buy Now on PumpFun</a>
+
 </header>
-  
+
+
+
 <section class="section">
+
 <div data-lang="en" class="active">
+
 <h2>🌴 What is SolanaSummerCoin?</h2>
+
 <p>SolanaSummerCoin ($SSC) is a community-driven memecoin on Solana for summer – 100% fun, 0% serious.</p>
+
 <p>No VCs, no dev tricks, no pre-mint deals – just see together how far this summer project can go.</p>
+
 </div>
+
 <div data-lang="de">
+
 <h2>🌴 Was ist SolanaSummerCoin?</h2>
+
 <p>SolanaSummerCoin ($SSC) ist ein Community-getriebener Memecoin auf Solana – 100 % Spaß, 0 % Ernst.</p>
+
 <p>Keine VCs, keine Entwickler-Tricks, kein Pre-Mint – einfach schauen, wie weit wir dieses Sommerprojekt tragen können.</p>
+
 </div>
+
 <div data-lang="fr">
+
 <h2>🌴 Qu'est-ce que SolanaSummerCoin ?</h2>
+
 <p>SolanaSummerCoin ($SSC) est un memecoin communautaire sur Solana : 100 % fun, 0 % sérieux.</p>
+
 <p>Pas de capital-risque, pas d'astuces de développement, pas de pré-création ; on voit juste jusqu'où on peut aller avec ce projet d'été.</p>
+
 </div>
+
 <div data-lang="ru">
+
 <h2>🌴 Что такое SolanaSummerCoin?</h2>
+
 <p>SolanaSummerCoin ($SSC) — это мем-койн, созданный сообществом на Solana — 100% веселья, 0% серьезности.</p>
+
 <p>Никаких венчурных капиталистов, никаких трюков разработчиков, никакого предварительного выпуска — просто посмотрим, как далеко мы сможем зайти в этом летнем проекте.</p>
+
 </div>
+
   <div data-lang="pl">
+
 <h2>🌴 Czym jest SolanaSummerCoin?</h2>
+
 <p>SolanaSummerCoin ($SSC) to napędzana przez społeczność memcoin na Solana – 100% zabawy, 0% powagi.</p>
+
 <p>Bez VC, bez sztuczek programistów, bez pre-mint – po prostu sprawdzamy, jak daleko możemy dojść z tym letnim projektem.</p>
+
 </div>
+
   <div data-lang="it">
+
 <h2>🌴 Cos'è SolanaSummerCoin?</h2>
+
 <p>SolanaSummerCoin ($SSC) è una memecoin creata dalla community su Solana per l'estate: 100% divertimento, 0% serietà.</p>
+
 <p>Niente VC, niente trucchi da sviluppatori, niente accordi pre-conio: vediamo insieme fin dove può arrivare questo progetto estivo.</p>
+
 </div>
+
 <div data-lang="es">
+
 <h2>🌴 ¿Qué es SolanaSummerCoin?</h2>
+
 <p>SolanaSummerCoin ($SSC) es una moneda meme impulsada por la comunidad en Solana para el verano: 100 % divertida, 0 % seria.</p>
+
 <p>Sin inversores de capital riesgo, sin trucos de desarrollo, sin acuerdos previos a la acuñación: simplemente veamos juntos hasta dónde puede llegar este proyecto de verano.</p>
+
 </div>
+
 <div data-lang="ch">
+
 <h2>🌴 SolanaSummerCoin 是什么？</h2>
+
 <p>SolanaSummerCoin（$SSC）是 Solana 上一个由社区驱动的夏季 memecoin——100% 有趣，0% 严肃。</p>
+
 <p>没有风险投资，没有开发者技巧，没有预铸交易——就让我们一起看看这个夏季项目能走多远吧。</p>
+
 </div>
+
 <div data-lang="jp">
+
 <h2>🌴 SolanaSummerCoinとは？</h2>
+
 <p>SolanaSummerCoin ($SSC) は、夏に向けてSolana上でコミュニティ主導で開発されるミームコインです。100%楽しく、全く真面目ではありません。</p>
+
 <p>VCも、開発者向けのトリックも、プレミントディールもありません。この夏のプロジェクトがどこまで発展するか、一緒に見ていきましょう。</p>
+
 </div>
-  
+
+
+
 </section>
 
+
+
 <section class="section">
+
 <div data-lang="en" class="active">
+
 <h2>🛠 Team</h2> 
+
 <p>Hey 👋🏼 I´m Lereox – a crypto nerd who wants to launch a fair Solana coin.</p>
+
 <p>I don't hold any tokens before launch – I buy after launch on Pump.fun like everyone else.</p>
+
 </div>
+
 <div data-lang="de">
+
 <h2>🛠 Team</h2>
+
 <p>Hey 👋🏼 Ich bin Lereox – ein Krypto-Nerd, der einen fairen Meme-Coin launchen will.</p>
+
 <p>Ich halten keine Tokens vor Launch – Ich kaufen wie alle anderen nach Launch auf Pump.fun.</p>
+
 </div>
+
 <div data-lang="fr">
+
 <h2>🛠 L'équipe</h2>
+
 <p>Salut 👋🏼, je suis Lereox, un passionné de cryptomonnaies qui souhaite lancer un memecoin équitable.</p>
+
 <p>Je ne conserve aucun jeton avant le lancement ; j'en achète après sur Pump.fun, comme tout le monde.</p>
+
 </div>
+
 <div data-lang="ru">
+
 <h2>🛠 Команда</h2>
+
 <p>Привет 👋🏼 Я Lereox — криптомонетчик, который хочет запустить честную мем-койн.</p>
+
 <p>Я не держу никаких токенов до запуска — я покупаю их после запуска на Pump.fun, как и все остальные.</p>
+
 </div>
+
 <div data-lang="pl">
+
 <h2>🛠 Zespół</h2>
+
 <p>Cześć 👋🏼 Jestem Lereox – krypto-nerd, który chce uruchomić uczciwą monetę memową.</p>
+
 <p>Nie posiadam żadnych tokenów przed uruchomieniem – kupuję po uruchomieniu na Pump.fun, jak wszyscy inni.</p>
+
 </div>
+
   <div data-lang="it">
+
 <h2>🛠 Team</h2>
+
 <p>Ciao 👋🏼, sono Lereox, un nerd delle criptovalute che vuole lanciare una Solana coin equa.</p>
+
 <p>Non possiedo token prima del lancio: acquisto dopo il lancio su Pump.fun come tutti gli altri.</p>
+
 </div>
+
   <div data-lang="es">
+
 <h2>🛠 Equipo</h2>
+
 <p>Hola 👋🏼. Soy Lereox, un apasionado de las criptomonedas que quiere lanzar una moneda Solana justa.</p>
+
 <p>No guardo tokens antes del lanzamiento; compro después del lanzamiento en Pump.fun, como todos los demás.</p>
+
 </div>
+
   <div data-lang="ch">
+
 <h2>🛠 团队</h2>
+
 <p>大家好👋🏼，我是 Lereox——一个想要发行公平 Solana 代币的加密货币爱好者。</p>
+
 <p>我在代币发行前不持有任何代币——我和其他人一样，在代币发行后在 Pump.fun 上购买代币。</p>
+
 </div>
+
 <div data-lang="jp">
+
 <h2>🛠 チーム</h2>
+
 <p>こんにちは👋🏼 Lereoxです。公正なSolanaコインをローンチしたいと思っている暗号通貨オタクです。</p>
+
 <p>ローンチ前にトークンを保有することはありません。ローンチ後には、他の皆さんと同じようにPump.funで購入します。</p>
+
 </div>
+
 </section>
 
+
+
 <section class="section">
+
 <div data-lang="en" class="active">
+
 <h2>💧 Tokenomics</h2>
+
 <p>(Transparent after launch on Pump.fun)</p>
+
 <table>
+
 <tr><th>Usage</th><th>% of Supply</th><th>Description</th></tr>
+
 <tr><td>Community</td><td>100%</td><td>All tokens via Pump.fun</td></tr>
+
 <tr><td>Liquidity Pool</td><td>~30%</td><td>Varies depending on launch</td></tr>
+
 <tr><td>Dev Wallet</td><td>0%</td><td>Devs buy like everyone else</td></tr>
+
 </table>
+
 <p>❗ No presales, no insider allocations, no team mint.</p>
+
 </div>
+
 <div data-lang="de">
+
 <h2>💧 Tokenomics</h2>
+
 <p>(Transparent nach Launch auf Pump.fun)</p>
+
 <table>
+
 <tr><th>Verwendung</th><th>% vom Supply</th><th>Beschreibung</th></tr>
+
 <tr><td>Community</td><td>100%</td><td>Alle Tokens über Pump.fun</td></tr>
+
 <tr><td>Liquidity Pool</td><td>~30%</td><td>Varriert je nach Launch</td></tr>
+
 <tr><td>Dev Wallet</td><td>0%</td><td>Devs kaufen wie alle</td></tr>
+
 </table>
+
 <p>❗ Keine Presales, keine Insider-Zuteilungen, kein Team-Mint.</p>
+
 </div>
+
 <div data-lang="fr">
+
 <h2>💧 Tokenomics</h2>
+
 <p>(Transparent après le lancement sur Pump.fun)</p>
+
 <table>
+
 <tr><th>Utilisation</th><th>% de l'offre</th><th>Description</th></tr>
+
 <tr><td>Communauté</td><td>100 %</td><td>Tous les jetons via Pump.fun</td></tr>
+
 <tr><td>Liquidité</td><td>~30 %</td><td>Varie selon le lancement</td></tr>
+
 <tr><td>Portefeuille des développeurs</td><td>0 %</td><td>Les développeurs achètent comme tout le monde</td></tr>
+
 </table>
+
 <p>❗ Pas de prévente, pas d'allocations internes, pas de création d'équipe.</p>
+
 </div>
+
 <div data-lang="ru">
+
 <h2>💧 Токеномика</h2>
+
 <p>(Прозрачно после запуска на Pump.fun)</p>
+
 <table>
+
 <tr><th>Использование</th><th>% от предложения</th><th>Описание</th></tr>
+
 <tr><td>Сообщество</td><td>100%</td><td>Все токены через Pump.fun</td></tr>
+
 <tr><td>Пул ликвидности</td><td>~30%</td><td>Изменяется в зависимости от запуска</td></tr>
+
 <tr><td>Кошелек разработчика</td><td>0%</td><td>Разработчики покупают, как и все остальные</td></tr>
+
 </table>
+
 <p>❗ Никаких предварительных продаж, никаких инсайдерских распределений, никакого командного чеканки.</p>
+
 </div>
+
   <div data-lang="pl">
+
 <h2>💧 Tokenomics</h2>
+
 <p>(Przejrzyste po uruchomieniu na Pump.fun)</p>
+
 <table>
+
 <tr><th>Wykorzystanie</th><th>% podaży</th><th>Opis</th></tr>
+
 <tr><td>Społeczność</td><td>100%</td><td>Wszystkie tokeny za pośrednictwem Pump.fun</td></tr>
+
 <tr><td>Pula płynności</td><td>~30%</td><td>Różni się w zależności od uruchomienia</td></tr>
+
 <tr><td>Portfel deweloperski</td><td>0%</td><td>Deweloperzy kupują jak wszyscy inni</td></tr>
+
 </table>
+
 <p>❗ Brak przedsprzedaży, brak alokacji insiderów, brak mennicy zespołowej.</p>
+
 </div>
+
   <div data-lang="es">
+
 <h2>💧 Tokenomics</h2>
+
 <p>(Transparente después del lanzamiento en Pump.fun)</p>
+
 <table>
+
 <tr><th>Uso</th><th>% del suministro</th><th>Descripción</th></tr>
+
 <tr><td>Comunidad</td><td>100%</td><td>Todos los tokens a través de Pump.fun</td></tr>
+
 <tr><td>Fondo de liquidez</td><td>~30%</td><td>Varía según el lanzamiento</td></tr>
+
 <tr><td>Monedero de desarrollador</td><td>0%</td><td>Los desarrolladores compran como todos los demás</td></tr>
+
 </table>
+
 <p>❗ Sin preventas, sin asignaciones internas, sin acuñación de equipo.</p>
+
 </div>
+
 </section>
 
+
+
 <section class="section">
+
 <h2>🗺️ Roadmap</h2>
+
 <div class="card-grid">
+
 <div class="card">☀️ Pre-Launch<br>Community-Hype & Memes</div>
+
 <div class="card">🚀 Launch<br>Pump.fun live</div>
+
 <div class="card">🌊 Expansion<br>Listings, Collabs, Memes</div>
+
 <div class="card">🍹 Community Event</div>
+
 </div>
+
 <div data-lang="it">
+
 <h2>💧 Tokenomics</h2>
+
 <p>(Trasparente dopo il lancio su Pump.fun)</p>
+
 <table>
+
 <tr><th>Utilizzo</th><th>% della fornitura</th><th>Descrizione</th></tr>
+
 <tr><td>Community</td><td>100%</td><td>Tutti i token tramite Pump.fun</td></tr>
+
 <tr><td>Pool di liquidità</td><td>~30%</td><td>Varia a seconda del lancio</td></tr>
+
 <tr><td>Portafoglio sviluppatori</td><td>0%</td><td>Gli sviluppatori acquistano come tutti gli altri</td></tr>
+
 </table>
+
 <p>❗ Nessuna prevendita, nessuna allocazione di insider, nessuna coniatura di team.</p>
+
 </div>
+
   <div data-lang="ch">
+
 <h2>💧代币经济学</h2>
+
 <p>（Pump.fun 上线后透明化）</p>
+
 <table>
+
 <tr><th>使用情况</th><th>供应量百分比</th><th>说明</th></tr>
+
 <tr><td>社区</td><td>100%</td><td>所有代币均通过 Pump.fun 流通</td></tr>
+
 <tr><td>流动性池</td><td>~30%</td><td>具体时间取决于上线时间</td></tr>
+
 <tr><td>开发者钱包</td><td>0%</td><td>开发者与其他人一样购买</td></tr>
+
 </table>
+
 <p>❗ 无预售，无内部分配，无团队铸造。</p>
+
 </div>
+
 <div data-lang="jp">
+
 <h2>💧トークノミクス</h2>
+
 <p>(Pump.funでのローンチ後には透明性が確保されます)</p>
+
 <table>
+
 <tr><th>使用状況</th><th>供給量の割合</th><th>説明</th></tr>
+
 <tr><td>コミュニティ</td><td>100%</td><td>すべてのトークンはPump.fun経由</td></tr>
+
 <tr><td>流動性プール</td><td>~30%</td><td>ローンチ時期によって異なります</td></tr>
+
 <tr><td>開発者ウォレット</td><td>0%</td><td>開発者は他の開発者と同様に購入します</td></tr>
+
 </table>
+
 <p>❗ プレセール、インサイダー割り当て、チームミントはありません。</p>
+
 </div>
+
 </section>
 
+
+
 <section class="section">
+
 <div data-lang="en" class="active"> 
+
 <h2>⚠️ Disclaimer</h2>
+
 <p>SolanaSummerCoin is a memecoin for fun only – no financial value or guarantee. Participation at your own risk.</p>
-</div>
-<div data-lang="de"> 
-<h2>⚠️ Disclaimer</h2>
-<p>SolanaSummerCoin ist ein Memecoin nur zum Spaß – kein finanzieller Wert oder Garantie. Die Teilnahme erfolgt auf eigene Gefahr.</p>
-</div>
-<div data-lang="fr">
-<h2>⚠️ Avertissement</h2>
-<p>SolanaSummerCoin est un memecoin réservé au divertissement – Aucune valeur financière ni garantie. La participation se fait à vos propres risques.</p>
-</div>
-<div data-lang="ru">
-<h2>⚠️ Отказ от ответственности</h2>
-<p>SolanaSummerCoin — это мемкойн только для развлечения — без финансовой ценности или гарантии. Участие на ваш страх и риск.</p>
-</div>
-  <div data-lang="pl">
-<h2>⚠️ Zastrzeżenie</h2>
-<p>SolanaSummerCoin to memecoin wyłącznie dla zabawy – bez wartości finansowej lub gwarancji. Udział odbywa się na własne ryzyko.</p>
-</div>
-<div data-lang="it">
-<h2>⚠️ Disclaimer</h2>
-<p>SolanaSummerCoin è una memecoin solo per divertimento, senza valore finanziario o garanzia. Partecipa a tuo rischio e pericolo.</p>
-</div>
-<div data-lang="es">
-<h2>⚠️ Aviso legal</h2>
-<p>SolanaSummerCoin es una moneda meme solo para diversión; no tiene valor financiero ni garantía. Participa bajo tu propio riesgo.</p>
-</div>
-<div data-lang="ch">
-<h2>⚠️免责声明</h2>
-<p>SolanaSummerCoin 是一款 memecoin，仅供娱乐，不提供任何财务价值或担保。参与风险自负。</p>
-</div>
-<div data-lang="jp">
-<h2>⚠️免責事項</h2>
-<p>SolanaSummerCoinは娯楽目的のミームコインであり、金銭的価値や保証はありません。ご参加は自己責任でお願いいたします。</p>
+
 </div>
 
+<div data-lang="de"> 
+
+<h2>⚠️ Disclaimer</h2>
+
+<p>SolanaSummerCoin ist ein Memecoin nur zum Spaß – kein finanzieller Wert oder Garantie. Die Teilnahme erfolgt auf eigene Gefahr.</p>
+
+</div>
+
+<div data-lang="fr">
+
+<h2>⚠️ Avertissement</h2>
+
+<p>SolanaSummerCoin est un memecoin réservé au divertissement – Aucune valeur financière ni garantie. La participation se fait à vos propres risques.</p>
+
+</div>
+
+<div data-lang="ru">
+
+<h2>⚠️ Отказ от ответственности</h2>
+
+<p>SolanaSummerCoin — это мемкойн только для развлечения — без финансовой ценности или гарантии. Участие на ваш страх и риск.</p>
+
+</div>
+
+  <div data-lang="pl">
+
+<h2>⚠️ Zastrzeżenie</h2>
+
+<p>SolanaSummerCoin to memecoin wyłącznie dla zabawy – bez wartości finansowej lub gwarancji. Udział odbywa się na własne ryzyko.</p>
+
+</div>
+
+<div data-lang="it">
+
+<h2>⚠️ Disclaimer</h2>
+
+<p>SolanaSummerCoin è una memecoin solo per divertimento, senza valore finanziario o garanzia. Partecipa a tuo rischio e pericolo.</p>
+
+</div>
+
+<div data-lang="es">
+
+<h2>⚠️ Aviso legal</h2>
+
+<p>SolanaSummerCoin es una moneda meme solo para diversión; no tiene valor financiero ni garantía. Participa bajo tu propio riesgo.</p>
+
+</div>
+
+<div data-lang="ch">
+
+<h2>⚠️免责声明</h2>
+
+<p>SolanaSummerCoin 是一款 memecoin，仅供娱乐，不提供任何财务价值或担保。参与风险自负。</p>
+
+</div>
+
+<div data-lang="jp">
+
+<h2>⚠️免責事項</h2>
+
+<p>SolanaSummerCoinは娯楽目的のミームコインであり、金銭的価値や保証はありません。ご参加は自己責任でお願いいたします。</p>
+
+</div>
+
+
+
 </section>
+
+
 
 <section class="section">
+
 <h2>📣 Social Media</h2>
+
 <a href="https://t.me/SolanaSummerCoinCommunity" target="_blank" class="buy-button">💬 Join Telegram</a>
+
+
+<a href="https://x.com/SolanaSumerCoin">🐦 X Community</a>
+
+
 <a href="https://x.com/SolanaSumerCoin" class="buy-button">🐦 X Community</a>
-<a href="https://meteora.ag" target="_blank" class="buy-button" id="buyAgain">🛒 Relaunch on Meteora</a>
+
+<a href="https://pump.fun/coin/95TTBR211D6ZY4xtDzAsDPboLCnu3X9vGs9C8ehbpump" target="_blank" class="buy-button" id="buyAgain">🛒 Buy Again</a>
+
 </section>
+
+
 
 <footer>
+
   <div data-lang="en" class="active"> 
+
     <p>SolanaSummerCoin – Just fun, no financial advice ☀️🌴</p>
+
   </div>
+
   <div data-lang="de"> 
+
    <p>SolanaSummerCoin – Nur Spaß, keine Finanzberatung ☀️🌴</p>
+
     </div>
+
   <div data-lang="fr">
+
 <p>SolanaSummerCoin – Divertissement uniquement, aucun conseil financier ☀️🌴</p>
+
 </div>
+
 <div data-lang="ru">
+
 <p>SolanaSummerCoin — только для развлечения, без финансовых советов ☀️🌴</p>
+
 </div>
+
   <div data-lang="pl">
+
 <p>SolanaSummerCoin – wyłącznie dla zabawy, bez porad finansowych ☀️🌴</p>
+
 </div>
+
 <div data-lang="it">
+
 <p>SolanaSummerCoin – Solo divertimento, nessuna consulenza finanziaria ☀️🌴</p>
+
 </div>
+
   <div data-lang="es">
+
 <p>SolanaSummerCoin: solo diversión, sin consejos financieros ☀️🌴</p>
+
 </div>
+
 <div data-lang="ch">
+
 <p>SolanaSummerCoin – 仅供娱乐，不提供任何财务建议☀️🌴</p>
+
 </div>
+
 <div data-lang="jp">
+
 <p>SolanaSummerCoin – 娯楽目的のみで、金融アドバイスではありません☀️🌴</p>
+
 </div>
+
 </footer>
 
+
+
 <script>
+
 function updateCountdown(){
+
   const now = new Date();
-  const target = new Date(Date.UTC(2025, 7, 11, 0, 0, 0)); // August 11, 2025 UTC
+
+  // Ersetze hier durch dein echtes Datum/Zeit (UTC):
+
+  const target = new Date(Date.UTC(2025, 6, 9, 15, 30, 0)); 
+
+  // Achtung: Monat ist 0-basiert => 6=Juli
+
   const diff = target - now;
+
   const buyNow = document.getElementById('buyNow');
+
   const buyAgain = document.getElementById('buyAgain');
+
   if(diff <= 0){
+
     document.getElementById('countdown').textContent='🚀 Launched!';
+
     buyNow.style.display='inline-block';
+
     buyAgain.style.display='inline-block';
+
   } else {
+
     const d = Math.floor(diff/86400000),
+
           h = Math.floor(diff/3600000)%24,
+
           m = Math.floor(diff/60000)%60,
+
           s = Math.floor(diff/1000)%60;
+
     document.getElementById('countdown').textContent=`⏳ Launch in: ${d}d ${h}h ${m}m ${s}s`;
+
     buyNow.style.display='none';
+
     buyAgain.style.display='none';
-  }
+
 }
+
+}
+
 setInterval(updateCountdown,1000); updateCountdown();
 
+const observer=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');})},{threshold:0.1});
+
+document.querySelectorAll('.section').forEach(s=>observer.observe(s));
+
 function switchLanguage(lang){
-  document.querySelectorAll('[data-lang]').forEach(el=>el.classList.remove('active'));
-  document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el=>el.classList.add('active'));
+
+document.querySelectorAll('[data-lang]').forEach(el=>el.classList.remove('active'));
+
+document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el=>el.classList.add('active'));
+
 }
+
 </script>
+
 </body>
+
 </html>
