@@ -853,65 +853,43 @@ footer { margin: 2em 0; font-size: 0.9em; color: #bbb; }
 
 
 <script>
-
-function updateCountdown(){
-
+function updateCountdown() {
   const now = new Date();
-
-  // Ersetze hier durch dein echtes Datum/Zeit (UTC):
-
-  const target = new Date(Date.UTC(2025, 11, 8, 15, 30, 0)); 
-
-  // Achtung: Monat ist 0-basiert => 6=Juli
-
+  const target = new Date(Date.UTC(2025, 7, 11, 0, 0, 0)); // 11. August 2025 (Monat ist 0-basiert: 7 = August)
   const diff = target - now;
-
   const buyNow = document.getElementById('buyNow');
-
   const buyAgain = document.getElementById('buyAgain');
 
-  if(diff <= 0){
-
-    document.getElementById('countdown').textContent='🚀 Launched!';
-
-    buyNow.style.display='inline-block';
-
-    buyAgain.style.display='inline-block';
-
+  if (diff <= 0) {
+    document.getElementById('countdown').textContent = '🚀 Launched!';
+    if (buyNow) buyNow.style.display = 'inline-block';
+    if (buyAgain) buyAgain.style.display = 'inline-block';
   } else {
-
-    const d = Math.floor(diff/86400000),
-
-          h = Math.floor(diff/3600000)%24,
-
-          m = Math.floor(diff/60000)%60,
-
-          s = Math.floor(diff/1000)%60;
-
-    document.getElementById('countdown').textContent=`⏳ Launch in: ${d}d ${h}h ${m}m ${s}s`;
-
-    buyNow.style.display='none';
-
-    buyAgain.style.display='none';
-
+    const d = Math.floor(diff / 86400000),
+          h = Math.floor(diff / 3600000) % 24,
+          m = Math.floor(diff / 60000) % 60,
+          s = Math.floor(diff / 1000) % 60;
+    document.getElementById('countdown').textContent = `⏳ Launch in: ${d}d ${h}h ${m}m ${s}s`;
+    if (buyNow) buyNow.style.display = 'none';
+    if (buyAgain) buyAgain.style.display = 'none';
+  }
 }
 
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.section').forEach(section => observer.observe(section));
+
+function switchLanguage(lang) {
+  document.querySelectorAll('[data-lang]').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => el.classList.add('active'));
 }
-
-setInterval(updateCountdown,1000); updateCountdown();
-
-const observer=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');})},{threshold:0.1});
-
-document.querySelectorAll('.section').forEach(s=>observer.observe(s));
-
-function switchLanguage(lang){
-
-document.querySelectorAll('[data-lang]').forEach(el=>el.classList.remove('active'));
-
-document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el=>el.classList.add('active'));
-
-}
-
 </script>
 
 </body>
